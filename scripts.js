@@ -13,7 +13,8 @@ const USERSCORE = document.querySelector('.usersScore')
 //  declare variable to hold computers choice paragraph in html
 const COMPUTERSCHOICE = document.querySelector('.computersChoice');
 //  declare variable to hold computers score paragraph in html
-const COMPUTERSSCORE = document.querySelector('.computersScore')
+const COMPUTERSSCORE = document.querySelector('.computersScore');
+const PAGETITLE = document.querySelector('.title')
 
 const ROCK = document.querySelector('#rock')
 const PAPER = document.querySelector('#paper')
@@ -29,13 +30,13 @@ function getComputerChoice(){
     console.log(num)
     switch(num){
         case 1:
-            usersChoice = "rock"
+            computersChoice = "rock"
             break;
         case 2: 
-            usersChoice = "paper"
+            computersChoice = "paper"
             break;
         case 3:
-            usersChoice = "scissors"
+            computersChoice = "scissors"
             break;
         default:
             console.log('getcomputerchoice is broken')
@@ -43,8 +44,45 @@ function getComputerChoice(){
 }
 
 // create a function to compare the choices and declare a winner
+function compareChoices(computerChoice, userChoice){
     // compare users choice against computers choice
     // alter html to display the round winner
+    console.log('comp ' + computerChoice);
+    console.log('user ' + userChoice);
+    COMPUTERSCHOICE.innerHTML = 'Computer: ' + computerChoice;
+    USERCHOICE.innerHTML = 'You: ' + userChoice;
+    if(computerChoice == userChoice){
+        PAGETITLE.innerHTML = ('It\'s a tie!');
+        return
+    }
+    if(userChoice == 'rock'){
+        if(computerChoice == 'paper'){
+            PAGETITLE.innerHTML = 'You Lose!'
+            ++computersScore
+        }else{
+            PAGETITLE.innerHTML = 'You Win!'
+            ++usersScore
+        }
+    }else if(userChoice == 'paper'){
+        if(computerChoice == 'scissors'){
+            PAGETITLE.innerHTML = 'You Lose!'
+            ++computersScore
+        }else{
+            PAGETITLE.innerHTML = 'You Win!'
+            ++usersScore
+        }
+    }else if(userChoice == 'scissors'){
+        if (computerChoice== 'rock'){
+            PAGETITLE.innerHTML = 'You Lose!'
+            ++computersScore
+        }else{
+            PAGETITLE.innerHTML = 'You Win!'
+            ++usersScore
+        }
+    }else{
+        console.log('error');
+    }
+}
 
 // create a function that checks if the userScore or computerScore is greater than 3
     // if score>3 disable input button
@@ -60,5 +98,6 @@ function getComputerChoice(){
 CHOICESARRAY.forEach(button => button.addEventListener('click', function(choice){
     usersChoice = choice.target.id;
     getComputerChoice();
+    compareChoices(computersChoice, usersChoice);
 
 }))
