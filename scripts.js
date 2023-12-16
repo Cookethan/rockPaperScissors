@@ -47,8 +47,9 @@ function getComputerChoice(){
 function compareChoices(computerChoice, userChoice){
     // compare users choice against computers choice
     // alter html to display the round winner
-    console.log('comp ' + computerChoice);
-    console.log('user ' + userChoice);
+
+    // console.log('comp ' + computerChoice);
+    // console.log('user ' + userChoice);
     COMPUTERSCHOICE.innerHTML = 'Computer: ' + computerChoice;
     USERCHOICE.innerHTML = 'You: ' + userChoice;
     if(computerChoice == userChoice){
@@ -57,47 +58,60 @@ function compareChoices(computerChoice, userChoice){
     }
     if(userChoice == 'rock'){
         if(computerChoice == 'paper'){
-            PAGETITLE.innerHTML = 'You Lose!'
-            ++computersScore
+            PAGETITLE.innerHTML = 'You Lose this round'
+            computersScore = ++computersScore
         }else{
-            PAGETITLE.innerHTML = 'You Win!'
-            ++usersScore
+            PAGETITLE.innerHTML = 'You Win this round!!'
+            usersScore = ++usersScore
         }
     }else if(userChoice == 'paper'){
         if(computerChoice == 'scissors'){
-            PAGETITLE.innerHTML = 'You Lose!'
-            ++computersScore
+            PAGETITLE.innerHTML = 'You Lose this round'
+            computersScore = ++computersScore
         }else{
-            PAGETITLE.innerHTML = 'You Win!'
-            ++usersScore
+            PAGETITLE.innerHTML = 'You Win this round!!'
+            usersScore = ++usersScore
         }
     }else if(userChoice == 'scissors'){
         if (computerChoice== 'rock'){
-            PAGETITLE.innerHTML = 'You Lose!'
-            ++computersScore
+            PAGETITLE.innerHTML = 'You Lose this round!'
+            computersScore = ++computersScore
         }else{
-            PAGETITLE.innerHTML = 'You Win!'
-            ++usersScore
+            PAGETITLE.innerHTML = 'You Win this round!'
+            usersScore = ++usersScore
         }
     }else{
         console.log('error');
     }
 }
 
+function checkScores(computersScore, usersScore){
 // create a function that checks if the userScore or computerScore is greater than 3
+    if (usersScore >= 3 || computersScore >= 3){
+        CHOICESARRAY.forEach(button => button.disabled = true);
+        PAGETITLE.innerHTML = 'Game Over!'
+    }
     // if score>3 disable input button
     // declare game winner
+}
+function updateScores(computersScore, usersScore){
+    COMPUTERSSCORE.innerHTML = 'Computers score: ' + computersScore;
+    USERSCORE.innerHTML = 'Your score:' + usersScore;
+}
 
-// create a function that plays out a round 
+
+
+CHOICESARRAY.forEach(button => button.addEventListener('click', function(choice){
+    // add EventListener to user input button that calls playRound function
+    // create a function that plays out a round 
+    // assign userChoice based on button pressed
     // call getComputerChoice
-    // call getUserChoice
     // call compareChoices
     // call checkScores
-
-// add EventListener to user input button that calls playRound function
-CHOICESARRAY.forEach(button => button.addEventListener('click', function(choice){
     usersChoice = choice.target.id;
     getComputerChoice();
     compareChoices(computersChoice, usersChoice);
+    updateScores(computersScore, usersScore);
+    checkScores(computersScore, usersScore);
 
 }))
