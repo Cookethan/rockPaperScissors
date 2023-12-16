@@ -3,15 +3,21 @@ let computersChoice = null;
 //  declate variable to hold users choice'
 let usersChoice = null;
 // declare variable to hold users score
-let usersScore = 0
+let usersScore = 0;
 // declare variable to hold computers score
-let computersScore = 0
+let computersScore = 0;
 //  declare variable to hold users choice paragraph in html
+const USERCHOICE = document.querySelector('.usersChoice');
 //  declare variable to hold users score paragraph in html
+const USERSCORE = document.querySelector('.usersScore')
 //  declare variable to hold computers choice paragraph in html
+const COMPUTERSCHOICE = document.querySelector('.computersChoice');
 //  declare variable to hold computers score paragraph in html
-//  declare variable to hold user input field
-//  declare variable to hold user input button
+const COMPUTERSSCORE = document.querySelector('.computersScore')
+
+const ROCK = document.querySelector('.rock')
+const PAPER = document.querySelector('.paper')
+const SCISSORS = document.querySelector('scissors')
 
 //  create a function to select computers choice
     // generate a random number between 1 and 3
@@ -36,3 +42,5 @@ let computersScore = 0
     // call checkScores
 
 // add EventListener to user input button that calls playRound function
+
+USERCHOICE.innerHTML = "this is the users choice";
