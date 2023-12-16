@@ -15,18 +15,33 @@ const COMPUTERSCHOICE = document.querySelector('.computersChoice');
 //  declare variable to hold computers score paragraph in html
 const COMPUTERSSCORE = document.querySelector('.computersScore')
 
-const ROCK = document.querySelector('.rock')
-const PAPER = document.querySelector('.paper')
-const SCISSORS = document.querySelector('scissors')
+const ROCK = document.querySelector('#rock')
+const PAPER = document.querySelector('#paper')
+const SCISSORS = document.querySelector('#scissors')
+const CHOICESARRAY = [ROCK, PAPER, SCISSORS]
 
 //  create a function to select computers choice
+function getComputerChoice(){
     // generate a random number between 1 and 3
     // write an if else to determine computers choice using the generated number
     // store computers choice in variable
-// create a function to get the users input
-    // capture user put
-    // make users input lowercase to avoid variation
-    // store users choice in variable
+    let num = Math.floor((Math.random() * 3) + 1);
+    console.log(num)
+    switch(num){
+        case 1:
+            usersChoice = "rock"
+            break;
+        case 2: 
+            usersChoice = "paper"
+            break;
+        case 3:
+            usersChoice = "scissors"
+            break;
+        default:
+            console.log('getcomputerchoice is broken')
+    }
+}
+
 // create a function to compare the choices and declare a winner
     // compare users choice against computers choice
     // alter html to display the round winner
@@ -42,5 +57,8 @@ const SCISSORS = document.querySelector('scissors')
     // call checkScores
 
 // add EventListener to user input button that calls playRound function
+CHOICESARRAY.forEach(button => button.addEventListener('click', function(choice){
+    usersChoice = choice.target.id;
+    getComputerChoice();
 
-USERCHOICE.innerHTML = "this is the users choice";
+}))
