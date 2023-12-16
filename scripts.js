@@ -1,9 +1,15 @@
 //  declare variable to hold computers choice
-//  declate variable to hold users choice
+let computersChoice = null;
+//  declate variable to hold users choice'
+let usersChoice = null;
 // declare variable to hold users score
+let usersScore = 0
 // declare variable to hold computers score
+let computersScore = 0
 //  declare variable to hold users choice paragraph in html
+//  declare variable to hold users score paragraph in html
 //  declare variable to hold computers choice paragraph in html
+//  declare variable to hold computers score paragraph in html
 //  declare variable to hold user input field
 //  declare variable to hold user input button
 
